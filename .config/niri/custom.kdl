@@ -1,0 +1,23 @@
+// Personal config. Not managed by dms, safe to edit.
+
+layout {
+    gaps 6
+
+    shadow {
+        on
+    }
+}
+
+// kitty: always open floating, centered, same size as the old KDE rule
+window-rule {
+    match app-id="^kitty$"
+    open-floating true
+    default-column-width { fixed 1280; }
+    default-window-height { fixed 925; }
+}
+
+// kitty: see-through when floating and not focused, so windows behind show
+window-rule {
+    match app-id="^kitty$" is-floating=true is-focused=false
+    opacity 0.6
+}

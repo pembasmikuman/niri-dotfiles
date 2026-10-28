@@ -1,0 +1,43 @@
+# Local build of cmatrix from upstream git using CMake.
+# The repo package is built with autotools, which fails to detect
+# use_default_colors(), so cmatrix paints a solid black background
+# instead of keeping the terminal's (transparent) background.
+
+pkgname=cmatrix-git
+pkgver=2.0.r121.g5c082c6
+pkgrel=1
+pkgdesc="A curses-based scrolling 'Matrix'-like screen (CMake build, transparent background)"
+arch=('x86_64')
+url="https://github.com/abishekvashok/cmatrix"
+license=('GPL-3.0-or-later')
+depends=('ncurses')
+makedepends=('cmake' 'git')
+provides=('cmatrix')
+conflicts=('cmatrix')
+_commit=5c082c64a1296859a11bee60c8c086655953a416
+source=("cmatrix::git+https://github.com/abishekvashok/cmatrix.git#commit=${_commit}")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd cmatrix
+  printf "2.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+build() {
+  cmake -S cmatrix -B build \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build build
+}
+
+package() {
+  cd cmatrix
+  install -Dm755 ../build/cmatrix "$pkgdir/usr/bin/cmatrix"
+  install -Dm644 cmatrix.1 "$pkgdir/usr/share/man/man1/cmatrix.1"
+  install -Dm644 mtx.pcf "$pkgdir/usr/share/fonts/misc/mtx.pcf"
+  install -Dm644 matrix.fnt matrix.psf.gz -t "$pkgdir/usr/share/kbd/consolefonts/"
+  for f in AUTHORS NEWS COPYING README.md ChangeLog; do
+    [[ -f $f ]] && install -Dm644 "$f" "$pkgdir/usr/share/doc/cmatrix/$f"
+  done
+}

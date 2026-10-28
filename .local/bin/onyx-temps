@@ -1,0 +1,24 @@
+#!/bin/sh
+# Print "cpuT gpuT ssdT cpuUse gpuUse ramUsedMiB ramTotalMiB" for the Onyx Temps Plasma widget.
+# Temperatures are whole °C, usage is whole percent.
+# hwmon numbers change between boots, so find each chip by name instead.
+cpu=0 ssd=0
+for h in /sys/class/hwmon/hwmon*; do
+    case $(cat "$h/name") in
+        k10temp) cpu=$(cat "$h/temp1_input") ;; # Tctl
+        nvme)    ssd=$(cat "$h/temp1_input") ;; # Composite
+    esac
+done
+
+# CPU usage: compare the busy/total tick counts over a short pause.
+read -r _ u n s i w q sq _ < /proc/stat; t1=$((u + n + s + i + w + q + sq)); i1=$((i + w))
+sleep 0.3
+read -r _ u n s i w q sq _ < /proc/stat; t2=$((u + n + s + i + w + q + sq)); i2=$((i + w))
+use=$(( (t2 - t1) > 0 ? 100 * ((t2 - t1) - (i2 - i1)) / (t2 - t1) : 0 ))
+
+gpu=$(nvidia-smi --query-gpu=temperature.gpu,utilization.gpu --format=csv,noheader,nounits 2>/dev/null | tr -d ',')
+set -- ${gpu:-0 0}
+# RAM: used = total - available, in MiB.
+ram=$(awk '/^MemTotal:/ {t=$2} /^MemAvailable:/ {a=$2} END {printf "%d %d", (t - a) / 1024, t / 1024}' /proc/meminfo)
+
+echo "$((cpu / 1000)) $1 $((ssd / 1000)) $use $2 $ram"

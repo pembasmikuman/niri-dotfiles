@@ -1,0 +1,73 @@
+{
+  "materialWallpapers": {
+    "": {
+      "shared": {
+        "preset": "wallpaper",
+        "seed": "#d0bcff"
+      }
+    }
+  },
+  "materialWallpaperProfiles": {
+    "wallpaper": {
+      "name": "wallpaper",
+      "layers": [
+        {
+          "shape": "pixelCircle",
+          "x": 0.089,
+          "y": 0.861,
+          "size": 0.43,
+          "rotation": 0,
+          "fill": "inversePrimary",
+          "overlap": "none"
+        },
+        {
+          "shape": "pixelTriangle",
+          "x": 0.255,
+          "y": 0.947,
+          "size": 0.15,
+          "rotation": 10,
+          "fill": "primary",
+          "overlap": "primary"
+        },
+        {
+          "shape": "pixelTriangle",
+          "x": 0.08,
+          "y": 0.558,
+          "size": 0.15,
+          "rotation": -91,
+          "fill": "primary",
+          "overlap": "primary"
+        },
+        {
+          "shape": "pixelTriangle",
+          "x": 0.256,
+          "y": 0.76,
+          "size": 0.15,
+          "rotation": -12,
+          "fill": "primary",
+          "overlap": "primary"
+        },
+        {
+          "shape": "pixelTriangle",
+          "x": 0.187,
+          "y": 0.601,
+          "size": 0.15,
+          "rotation": -62,
+          "fill": "primary",
+          "overlap": "primaryContainer"
+        },
+        {
+          "shape": "pixelTriangle",
+          "x": -0.023,
+          "y": 0.604,
+          "size": 0.15,
+          "rotation": -123,
+          "fill": "primary",
+          "overlap": "inversePrimary"
+        }
+      ],
+      "pattern": "topography",
+      "strength": 0.1
+    }
+  }
+}
