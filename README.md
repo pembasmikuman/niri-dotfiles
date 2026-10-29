@@ -23,7 +23,8 @@ Packages (CachyOS / Arch):
 ```sh
 sudo pacman -S niri dux-shell quickshell xwayland-satellite \
   xdg-desktop-portal-gnome xdg-desktop-portal-gtk \
-  matugen cava qt6-multimedia wtype i2c-tools
+  matugen cava qt6-multimedia wtype i2c-tools \
+  ttf-jetbrains-mono-nerd ttf-merriweather
 ```
 
 Copy the files into your home folder:
