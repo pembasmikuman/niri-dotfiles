@@ -10,7 +10,7 @@ My [niri](https://github.com/YaLTeR/niri) setup on CachyOS, using [Dux Shell](ht
 .config/niri/dms/*.kdl           Dux Shell's niri files (binds, layout, colors, outputs, ...)
 .config/dms/settings.json        Dux Shell settings (bar layout, theme, desktop widgets)
 .config/dms/plugins/systemTemps/ desktop widget: CPU/GPU/RAM/SSD temps and usage
-.config/environment.d/           makes KDE/Qt apps use the KDE theme (dark) under niri
+.config/environment.d/           KDE theme for Qt apps under niri, and the KDE Wallet store for Claude Desktop
 .local/bin/system-temps          script that feeds the System Temps widget
 material-wallpaper.json          Dux Shell's generated Material wallpaper settings
 pkgbuilds/cmatrix-git/           cmatrix built with CMake so it keeps a transparent background

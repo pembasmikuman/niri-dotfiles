@@ -1,5 +1,8 @@
 // Personal config. Not managed by dms, safe to edit.
 
+// Hand the login-unlocked KDE Wallet to this session. Plasma does this itself, niri doesn't
+spawn-at-startup "/usr/lib/pam_kwallet_init"
+
 layout {
     gaps 6
 
