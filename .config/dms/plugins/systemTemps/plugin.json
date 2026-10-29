@@ -1,12 +1,12 @@
 {
-    "id": "onyxTemps",
-    "name": "Onyx Temps",
-    "description": "CPU, GPU, RAM and SSD temperatures and usage for Onyx",
-    "version": "1.0.0",
+    "id": "systemTemps",
+    "name": "System Temps",
+    "description": "CPU, GPU, RAM and SSD temperatures and usage for this machine",
+    "version": "1.1.0",
     "author": "Shazwan",
     "type": "desktop",
     "capabilities": ["desktop-widget", "monitoring"],
-    "component": "./OnyxTemps.qml",
+    "component": "./SystemTemps.qml",
     "icon": "thermostat",
     "requires_dms": ">=1.2.0",
     "permissions": ["settings_read"]

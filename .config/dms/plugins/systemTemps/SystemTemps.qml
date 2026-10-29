@@ -48,10 +48,21 @@ DesktopPluginComponent {
         }
     }
 
-    // Same script as the Plasma widget: prints "cpuT gpuT ssdT cpuUse gpuUse ramUsedMiB ramTotalMiB".
+    // Shown in the header, so the same widget names whichever machine it runs on.
+    property string hostName: ""
+
+    Process {
+        command: ["uname", "-n"]
+        running: true
+        stdout: StdioCollector {
+            onStreamFinished: root.hostName = text.trim()
+        }
+    }
+
+    // Prints "cpuT gpuT ssdT cpuUse gpuUse ramUsedMiB ramTotalMiB".
     Process {
         id: reader
-        command: ["sh", "-c", "exec \"$HOME/.local/bin/onyx-temps\""]
+        command: ["sh", "-c", "exec \"$HOME/.local/bin/system-temps\""]
         stdout: StdioCollector {
             onStreamFinished: {
                 const t = text.trim().split(/\s+/).map(Number)
@@ -252,7 +263,7 @@ DesktopPluginComponent {
             ColumnLayout {
                 spacing: 0
                 Text {
-                    text: "Onyx"
+                    text: root.hostName !== "" ? root.hostName : "System"
                     color: Theme.surfaceText
                     font.family: Theme.fontFamily
                     font.pixelSize: Theme.fontSizeMedium

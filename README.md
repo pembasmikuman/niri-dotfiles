@@ -9,9 +9,9 @@ My [niri](https://github.com/YaLTeR/niri) setup on CachyOS, using [Dux Shell](ht
 .config/niri/custom.kdl          my personal overrides, loaded last
 .config/niri/dms/*.kdl           Dux Shell's niri files (binds, layout, colors, outputs, ...)
 .config/dms/settings.json        Dux Shell settings (bar layout, theme, desktop widgets)
-.config/dms/plugins/onyxTemps/   desktop widget: CPU/GPU/RAM/SSD temps and usage
+.config/dms/plugins/systemTemps/ desktop widget: CPU/GPU/RAM/SSD temps and usage
 .config/environment.d/           makes KDE/Qt apps use the KDE theme (dark) under niri
-.local/bin/onyx-temps            script that feeds the Onyx Temps widget
+.local/bin/system-temps          script that feeds the System Temps widget
 material-wallpaper.json          Dux Shell's generated Material wallpaper settings
 pkgbuilds/cmatrix-git/           cmatrix built with CMake so it keeps a transparent background
 ```
@@ -42,7 +42,7 @@ systemctl --user add-wants niri.service dms.service
 
 The Material wallpaper lives in `~/.local/state/dms/session.json`; merge the two keys from `material-wallpaper.json` into that file (or recreate it in Settings → Wallpaper).
 
-The Onyx Temps widget reads `k10temp` (AMD CPU), `nvme` and `nvidia-smi`; adjust `.local/bin/onyx-temps` for other hardware. Add it from Settings → Desktop Widgets.
+The System Temps widget shows the machine's hostname and detects its sensors: AMD (`k10temp`/`zenpower`) or Intel (`coretemp`) CPUs, NVIDIA (`nvidia-smi`) or AMD (`amdgpu`) GPUs, and NVMe/SATA drives. Intel integrated graphics report no temperature, so that row shows "--". Add it from Settings → Desktop Widgets.
 
 ## Personal tweaks
 

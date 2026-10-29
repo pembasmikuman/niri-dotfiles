@@ -1,5 +1,5 @@
 #!/bin/sh
-# Print "cpuT gpuT ssdT cpuUse gpuUse ramUsedMiB ramTotalMiB" for the Onyx Temps widget.
+# Print "cpuT gpuT ssdT cpuUse gpuUse ramUsedMiB ramTotalMiB" for the System Temps desktop widget.
 # Temperatures are whole °C, usage is whole percent; 0 means no reading on this machine.
 # Sensors are detected at run time, so the same script works on AMD, Intel and NVIDIA/AMD GPUs.
 

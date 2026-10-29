@@ -154,8 +154,8 @@
   "desktopWidgetInstances": [
     {
       "id": "dw_1793200676401_q7j3l7wwa",
-      "widgetType": "onyxTemps",
-      "name": "Onyx Temps",
+      "widgetType": "systemTemps",
+      "name": "System Temps",
       "enabled": true,
       "config": {
         "displayPreferences": [
