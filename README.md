@@ -49,7 +49,7 @@ The Onyx Temps widget reads `k10temp` (AMD CPU), `nvme` and `nvidia-smi`; adjust
 - **Monitor:** HDMI-A-1, 1920x1080 @ 144 Hz (`dms/outputs.kdl`)
 - **Focus follows mouse**, without scrolling the view (`config.kdl`)
 - **Looks:** 6px gaps, window shadows, 2px focus ring, 12px corners (`custom.kdl`)
-- **kitty** always opens floating and centered at 1280x925, and goes 60% see-through when floating and unfocused (`custom.kdl`)
+- **kitty** goes 60% see-through when floating and unfocused (`custom.kdl`)
 
 ## Keybinds (highlights)
 

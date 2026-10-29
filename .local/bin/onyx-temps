@@ -6,6 +6,7 @@ cpu=0 ssd=0
 for h in /sys/class/hwmon/hwmon*; do
     case $(cat "$h/name") in
         k10temp) cpu=$(cat "$h/temp1_input") ;; # Tctl
+        coretemp) cpu=$(cat "$h/temp1_input") ;; # Intel package temp
         nvme)    ssd=$(cat "$h/temp1_input") ;; # Composite
     esac
 done
