@@ -17,6 +17,16 @@ window-rule {
     opacity 0.6
 }
 
+// Slightly see-through: VS Code, Claude desktop, Sonora, ZapFast, Telegram, and every KDE app
+window-rule {
+    match app-id=r#"^(com\.microsoft\.VSCode|code|com\.anthropic\.Claude|sonora|zapfast|org\.telegram\.desktop|TelegramDesktop|org\.kde\..*)$"#
+    opacity 0.9
+
+    background-effect {
+        blur true
+    }
+}
+
 // App shortcuts. Mod+C replaces dms's center-column bind
 binds {
     Mod+B hotkey-overlay-title="Browser" { spawn "/opt/zen-browser-bin/zen-bin"; }
